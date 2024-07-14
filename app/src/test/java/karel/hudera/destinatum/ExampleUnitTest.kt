@@ -1,4 +1,4 @@
-package com.example.mapapp
+package karel.hudera.destinatum
 
 import org.junit.Test
 
