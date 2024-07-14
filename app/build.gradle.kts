@@ -41,16 +41,13 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
-
+        //kotlinCompilerExtensionVersion = "1.5.1"
         composeCompiler {
             enableStrongSkippingMode = true
-
             reportsDestination = layout.buildDirectory.dir("compose_compiler")
-            stabilityConfigurationFile =
-                rootProject.layout.projectDirectory.file("stability_config.conf")
         }
     }
+
 
     packaging {
         resources {
@@ -76,8 +73,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation(libs.osmdroid.android)
-    implementation(libs.osmdroid.wms)
-    implementation(libs.osmdroid.mapsforge)
-    implementation(libs.osmdroid.geopackage)
     implementation(libs.androidx.core.splashscreen)
 }
