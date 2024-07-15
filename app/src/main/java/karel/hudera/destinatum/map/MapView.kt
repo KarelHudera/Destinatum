@@ -14,7 +14,9 @@ fun MapView(
     val mapViewState = mapViewWithLifecycle()
 
     AndroidView(
-        { mapViewState },
-        modifier
-    ) { mapView -> onLoad?.invoke(mapView) }
+        factory = { mapViewState },
+        modifier = modifier
+    ) { mapView ->
+        onLoad?.invoke(mapView)
+    }
 }

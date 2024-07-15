@@ -13,7 +13,7 @@ import org.osmdroid.config.Configuration
 
 class MainActivity : ComponentActivity() {
     companion object {
-        const val USER_AGENT = "karel.hudera.destinatum"
+        private const val USER_AGENT = "karel.hudera.destinatum"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,21 +21,29 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         installSplashScreen()
 
-        window.statusBarColor = android.graphics.Color.TRANSPARENT
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+        setupStatusBarAndWindow()
 
-        val ctx = applicationContext
-        Configuration.getInstance().load(ctx, ctx.getSharedPreferences("osmdroid", MODE_PRIVATE))
-//        Configuration.getInstance().isDebugMapTileDownloader = true
-//        Configuration.getInstance().isDebugMode = true
-//        Configuration.getInstance().isDebugTileProviders = true
-        Configuration.getInstance().userAgentValue = USER_AGENT
+        configureOsmdroid()
 
         setContent {
             DestinatumTheme {
                 MapView()
             }
         }
+    }
+
+    private fun setupStatusBarAndWindow() {
+        window.statusBarColor = android.graphics.Color.TRANSPARENT
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+    }
+
+    private fun configureOsmdroid() {
+        val ctx = applicationContext
+        Configuration.getInstance().load(ctx, ctx.getSharedPreferences("osmdroid", MODE_PRIVATE))
+        // Configuration.getInstance().isDebugMapTileDownloader = true
+        // Configuration.getInstance().isDebugMode = true
+        // Configuration.getInstance().isDebugTileProviders = true
+        Configuration.getInstance().userAgentValue = USER_AGENT
     }
 }

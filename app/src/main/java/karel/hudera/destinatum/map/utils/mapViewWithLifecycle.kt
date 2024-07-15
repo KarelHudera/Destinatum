@@ -39,13 +39,7 @@ fun mapViewWithLifecycle(): MapView {
             )
             minZoomLevel = zoomLevel
 
-            // Add a marker
-            val marker = Marker(this)
-            marker.position = GeoPoint(39.5696, 2.6502)
-            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
-            marker.title = "Palma de Mallorca"
-
-            overlays.add(marker)
+            addMarker(this)
         }
     }
 
